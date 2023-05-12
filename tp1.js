@@ -90,11 +90,14 @@ class ProductoNoblex{
     [8901,2,'imagenes/noblex/tv8.jpg',70000,'Smart led TV QUINT 50 pulgadas HD','Añadir al carrito'],
     [9012,5,'imagenes/noblex/tv9.jpg',60000,'led TV E-NOVA 50 pulgadas HD','Añadir al carrito'],
     ];
-    ordenado = [];
-    precio=0;
-    precioMayor=0;
-    precioMenor=0;
-    mostrar= 0;
+    numeros = [];
+    numerosOrden = [];
+    noblexOrden = [];
+    precioMayor = 0;
+    precioMenor =0;
+    precio = 0;
+    pos = 0;
+    cont = 0;
     verTelevisores(){
         let infotv = '';
         for(let j of this.noblex){
@@ -114,11 +117,72 @@ class ProductoNoblex{
                     infotv+=`<li>${j[k]}</li>`;
                 }
             }
-            infotv+=`</ul></di>`;
+            infotv+=`</ul></div>`;
             document.getElementById('infotv').innerHTML += infotv;
         }
     }
     ordenarTelevisores(){
+        for(let j of this.noblex){
+            for(let k in j){
+                if(k == 3){
+                    this.numeros [this.cont] = j[k];
+                    this.cont++;
+                }
+            }
+        }
+        this.precioMayor = this.numeros[0];
+        this.precioMenor = this.numeros[0];
+        for(let x in this.numeros){
+            if(this.precioMayor<this.numeros[x]){
+                this.precioMayor=this.numeros[x];
+            }
+        }
+        console.log(this.numeros);
+        for(let z=0; z<9;z++){
+            if(this.precioMenor != this.precioMayor){
+                this.precioMenor = this.precioMayor;
+                for(let i in this.numeros){
+                    if(this.precioMenor>this.numeros[i]){
+                        this.precioMenor=this.numeros[i];
+                        this.pos = i;
+                    }
+                }  
+            }
+            this.numeros[this.pos] = this.precioMayor;
+            this.numerosOrden[z] = this.precioMenor
+        }
+        console.log(this.numerosOrden);
+        this.cont = 0;
+        for(let y of this.noblex){
+            for(let c in y){
+                if(y[c] == 125000){
+                    this.noblexOrden[this.cont] = y[c];
+                }
+            }
+            this.cont++;
+        }
+        console.log(this.noblexOrden);
+        let ordentv = '';
+        for(let h of this.noblexOrden){
+            ordentv = '<div class="tarjeta"><ul>';
+            for(let o in h){
+                if(o == 0){
+                    ordentv+=`<li>Código: ${h[o]}</li>`;
+                }else if(o == 1){
+                    ordentv+=`<li>Stock: ${h[o]}</li>`;
+                }else if(o == 2){
+                    ordentv+=`<li><img src="${h[o]}" /></li>`;
+                }else if(o == 3){
+                    ordentv+=`<li>$ ${h[o]}</li>`;
+                }else if(o == 5){
+                    ordentv+=`<button>${h[o]}</button>`;
+                }else{
+                    ordentv+=`<li>${h[o]}</li>`;
+                }
+            }
+            ordentv+=`</ul></div>`;
+            document.getElementById('ordentv').innerHTML += ordentv;
+        }
     }
 }
 let nb =new ProductoNoblex();
