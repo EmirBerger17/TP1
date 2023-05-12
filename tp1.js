@@ -154,8 +154,10 @@ class ProductoNoblex{
         console.log(this.numerosOrden);
         this.cont = 0;
         for(let y of this.noblex){
-            if(y[3] == 60000){
-                this.noblexOrden.push(y);
+            for(let c in y){
+                if(y[c] == 60000){
+                    this.noblexOrden[this.cont] = y;  
+                } 
             }
             this.cont++;
         }
