@@ -110,7 +110,6 @@ class ProductoNoblex{
 
                     if([j[k]] > this.precioMayor){
                         this.precioMayor = [j[k]];
-                        console.log(this.precioMayor)
                     }else{
                         this.precioMenor = [j[k]];
                     }
