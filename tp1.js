@@ -94,6 +94,7 @@ class ProductoNoblex{
     precio=0;
     precioMayor=0;
     precioMenor=0;
+    mostrar= 0;
     verTelevisores(){
         let infotv = '';
         for(let j of this.noblex){
@@ -107,13 +108,6 @@ class ProductoNoblex{
                     infotv+=`<li><img src="${j[k]}" /></li>`;
                 }else if(k == 3){
                     infotv+=`<li>$ ${j[k]}</li>`;
-
-                    if([j[k]] > this.precioMayor){
-                        this.precioMayor = [j[k]];
-                    }else{
-                        this.precioMenor = [j[k]];
-                    }
-
                 }else if(k == 5){
                     infotv+=`<button>${j[k]}</button>`;
                 }else{
