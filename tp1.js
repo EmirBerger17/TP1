@@ -98,6 +98,7 @@ class ProductoNoblex{
     precio = 0;
     pos = 0;
     cont = 0;
+    posicion=0;
     verTelevisores(){
         let infotv = '';
         for(let j of this.noblex){
@@ -152,15 +153,15 @@ class ProductoNoblex{
             this.numerosOrden[z] = this.precioMenor
         }
         console.log(this.numerosOrden);
-        this.cont = 0;
-        for(let y of this.noblex){
+        this.cont=0;
+        /*for(let y of this.noblex){
             for(let c in y){
-                if(y[c] == 125000){
-                    this.noblexOrden[this.cont] = y[c];
+                if(y[c] == 60000){
+                    this.noblexOrden.push(this.noblex[c]);
                 }
             }
             this.cont++;
-        }
+        }*/
         console.log(this.noblexOrden);
         let ordentv = '';
         for(let h of this.noblexOrden){
